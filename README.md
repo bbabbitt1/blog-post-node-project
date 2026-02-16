@@ -1,0 +1,1 @@
+This is a blog application using Node.js, Express.js and EJS. This app will allow users to create and view blog post -- posts will not persist because there is no backend. 
