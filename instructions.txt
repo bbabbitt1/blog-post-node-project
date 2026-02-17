@@ -1,0 +1,12 @@
+Deliverables
+    - One Node project for the function of the website
+    - (at least) One EJS file for the structure of the website
+    - (at least) One CSS for the styling of the website
+
+Features
+    - Post Creation: users should be able to create new posts 
+    - Post Viewing: The home page should allow the user to view all their posts 
+    - Post Update/Delete
+    - Styling: app should be well styled. experience for both desktop and mobile
+
+Theme: 

@@ -1,0 +1,211 @@
+:root {
+  --dark: #30364F;
+  --dark-grey: #ACBAC4;
+  --dark-tan: #E1D9BC;
+  --light: #F0F0DB;
+}
+
+nav {
+    background-color: var(--dark);
+    color: var(--light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    margin-left: 0;
+    padding-left: 2rem;
+}
+
+nav h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+nav a {
+    color: var(--dark-tan);
+    font-size: 1.4rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--light);
+}
+
+body {
+    background-color: color-mix(in srgb, var(--light) 50%, transparent);
+}
+
+.new-blog-btn {
+    background-color: var(--dark-tan);
+    color: var(--dark);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 2rem;
+}
+
+.new-blog-btn:hover {
+    background-color: var(--dark-grey);
+}
+
+#subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+#subheader h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--dark);
+    letter-spacing: 0.5px;
+}
+/* Modal Styles */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--dark);
+}
+
+.modal h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-right: 2rem;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--dark);
+}
+
+#blogText {
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid var(--dark-grey);
+    border-radius: 5px;
+    margin: 1rem 0;
+    font-family: Arial, sans-serif;
+}
+
+#blogForm button {
+    background-color: var(--dark);
+    color: var(--light);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#blogForm button:hover {
+    background-color: var(--dark-grey);
+}
+
+/* Blog Display */
+.blogs-container {
+    padding: 2rem;
+}
+
+.blog-post {
+    background-color: white;
+    border-left: 4px solid var(--dark-tan);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    display: block;
+    font-size: 1.25rem;
+}
+
+.blog-header {
+    display:inline-flex;
+    padding-left: 95%;
+    justify-content: flex-end;
+    align-items: right;
+    gap: 0.5rem;
+}
+
+.timestamp {
+    color: var(--dark-grey);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.edit-btn, .delete-btn {
+    grid-row: 1;
+    align-self: flex-end;
+    background-color: var(--dark-tan);
+    color: var(--dark);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}
+
+.new-blog-btn {
+    background-color: var(--dark);
+    color: var(--light);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 2rem;
+}
+
+.new-blog-btn:hover {
+    background-color: var(--dark-grey);
+}
+
+
+
