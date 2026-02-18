@@ -15,6 +15,7 @@ const upload = multer();
 let blogs = [];
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(morgan('tiny'));
 app.use(express.static('public'));
 app.use(upload.none()); 
@@ -26,10 +27,12 @@ app.get('/', (req, res) => {
 app.post('/posts', (req, res) => {
     console.log(req.body);
     const newBlog = {
+        _id:Date.now().toString(),
         content: req.body.content,
         timestamp: new Date()
     };
     console.log('New blog post received:', req.body.content);
+    console.log("New post has an id of: ", req.params.id);
     blogs.unshift(newBlog); // Add to beginning
     res.redirect('/');
 });
@@ -46,8 +49,17 @@ app.put('/posts/:id', (req, res) => {
     } 
 });
 
-
-
+app.delete('/posts/:id',(req, res) =>{
+    const blogId = req.params.id;
+    const blogIndex = blogs.findIndex(blog => blog._id === blogId);
+    if (blogIndex !== -1) {
+        blogs.splice(blogIndex,1);
+        res.json({ success: true });
+        console.log("Blog Id ", blogId, " has been successfully deleted.")
+    } else {
+        res.status(404).json({ success: false, message: 'Blog post not found' });
+    }
+})
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

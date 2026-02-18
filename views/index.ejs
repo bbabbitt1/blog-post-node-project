@@ -69,40 +69,45 @@
             modal.style.display = 'none';
             overlay.style.display = 'none';
         });
+        
+let editingBlogId = null;
 
-        // Submit form
-        blogForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(blogForm);
-            fetch('/posts', {
-                method: 'POST',
-                body: formData
-            }).then(() => {
-                location.reload();
-            });
-        });
+blogForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const content = document.getElementById('blogText').value.trim();
+  if (!content) return;
+
+  if (editingBlogId) {
+    await fetch(`/posts/${editingBlogId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content })
+    });
+  } else {
+    await fetch('/posts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content })
+    });
+  }
+
+  location.reload();
+});
+
 
         // Edit blog
-        editButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const blogId = button.getAttribute('data-id');
-                const blogContent = button.parentElement.nextElementSibling.textContent;
-                document.getElementById('blogText').value = blogContent;
-                modal.style.display = 'block';
-                overlay.style.display = 'block';
+editButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        editingBlogId = button.getAttribute('data-id');
+        const blogContent = button.parentElement.nextElementSibling.textContent;
 
-                blogForm.onsubmit = (e) => {
-                    e.preventDefault();
-                    const formData = new FormData(blogForm);
-                    fetch(`/posts/${blogId}`, {
-                        method: 'PUT',
-                        body: formData
-                    }).then(() => {
-                        location.reload();
-                    });
-                };
-            });
-        });
+        document.getElementById('blogText').value = blogContent;
+        modal.style.display = 'block';
+        overlay.style.display = 'block';
+    });
+});
+
 
         // Delete blog
         deleteButtons.forEach(button => {
@@ -117,7 +122,7 @@
                 }
             });
         });
-        
+
         
     </script>
 </body>
